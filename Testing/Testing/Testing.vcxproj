@@ -70,6 +70,7 @@
     <ClCompile Include="STL_map_test.cpp" />
     <ClCompile Include="STL_priority_queue.cpp" />
     <ClCompile Include="STL_priority_queue_max.cpp" />
+    <ClCompile Include="STL_set.cpp" />
     <ClCompile Include="STL_unordered_map_testing.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

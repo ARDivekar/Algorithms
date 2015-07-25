@@ -27,5 +27,8 @@
     <ClCompile Include="STL_priority_queue_max.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="STL_set.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

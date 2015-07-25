@@ -47,10 +47,3 @@ void pq_max_test1() {
 		pq_max.pop();
 	}
 }
-
-int main() {
-	int i;
-	pq_max_test1();
-	cout << "\n>";
-	cin >> i;
-}
