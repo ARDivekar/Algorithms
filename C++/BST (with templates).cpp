@@ -8,8 +8,8 @@ class Node{
 	T data;
 	Node<T> *left;
 	Node<T> *right;
-	Node<T> *parent;
-	
+	Node<T> *parent; 
+	int times_visited;
 	Node(T input_data=NULL){
 		data=input_data;
 		left=NULL;
@@ -33,6 +33,7 @@ class BinarySearchTree{
 		n=input_size;
 		root=input_root;
 	}
+	
 
 	Node<T>* search(T data, Node<T> *p=NULL){
 		if(!p) p=root;
@@ -129,6 +130,20 @@ class BinarySearchTree{
 		}
 	}
 
+	void postorder(){
+		cout<<"\n<---BST Postorder--->"<<endl;
+		postorder(root);
+		cout<<"\n<---End of BST--->"<<endl;
+	}
+
+	void postorder(Node<T> *p){
+		if(p){
+			postorder(p->left);
+			postorder(p->right);
+			cout<<p->data<<" ";
+		}
+	}
+
 	
 	void level_order(Node<T> *p=NULL){
 		cout<<"\n<---BST--->"<<endl;
@@ -198,8 +213,32 @@ class BinarySearchTree{
 	}
 
 
-	Node<T>* to_doubly_linked_list(){ //Note: this destroys the tree
-		
+
+	void Morris_inorder(Node<T> *p=NULL){
+		if(!p) p=root;
+		Node<T> *current=p;
+		Node<T> *pred=NULL;
+		while(current!=NULL){
+			if(current->left==NULL){
+				cout<<current->data<<" ";
+				current=current->right;
+			}
+			else{
+				pred=current->left;
+				while(pred->right!=NULL && pred->right!=current)
+					pred=pred->right;
+				
+				if (pred->right == NULL){
+					pred->right=current;
+					current=current->left;
+				}
+				else if (pred->right==current){
+					pred->right=NULL;
+					cout<<current->data<<" ";
+					current=current->right;
+				}
+			}
+		}
 	}
 
 };
@@ -207,7 +246,27 @@ class BinarySearchTree{
 
 int main(){
 	BinarySearchTree<int> *t=new BinarySearchTree<int>();
-	t->insert( -5);
+
+
+	t->insert(5);
+	t->insert(3);
+	t->insert(9);
+	t->insert(2);
+	t->insert(4);
+	t->insert(4);
+	t->insert(1);
+	t->insert(12);
+	t->insert(6);
+	t->insert(7);
+	t->insert(10);
+	t->insert(9);
+
+	t->postorder();
+	//t->Morris_inorder();
+	//cout<<"\n\n"<<t->is_tree();
+	t->inorder();
+
+	/*t->insert( -5);
 	t->insert( -15);
 	t->insert( -3);
 	t->insert( -14);
@@ -224,7 +283,7 @@ int main(){
 	t->remove(-14);
 	if(t->is_tree())
 		t->inorder();
-	
+	*/	  
 		
 
 }
