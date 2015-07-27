@@ -33,7 +33,7 @@ public:
 
 
 void pq_max_test1() {
-	std::priority_queue<Node<int>> pq_max;
+	std::priority_queue<Node<int> > pq_max;
 	pq_max.push(*(new Node<int>(5)));
 	pq_max.push(*(new Node<int>(6)));
 	pq_max.push(*(new Node<int>(4)));
@@ -47,3 +47,4 @@ void pq_max_test1() {
 		pq_max.pop();
 	}
 }
+
