@@ -55,10 +55,10 @@ class Queue{
 
 
 template<typename T>
-void RadixSort(T *input, long n){
+void RadixSort(T *input, long n, int charset_size=10){
 	long i,j;
 	T temp;
-	Queue<int> buckets[10];
+	Queue<int> *buckets=new Queue<int>[charset_size];
 	long highest_power_of_10=1;  //assume input is an interger format
 	for(i=0; i<n; i++){
 		temp=input[i];
@@ -76,8 +76,8 @@ void RadixSort(T *input, long n){
 /*Printing:  
 	for(i=0; i<10; i++){
 		cout<<"\nBucket "<<i<<":\t";
-		//if(!buckets[i].is_empty()) 
-			buckets[i].print();
+		//if(!buckets[i]->is_empty()) 
+			buckets[i]->print();
 	}
 */
 	
@@ -113,10 +113,26 @@ void RadixSort(T *input, long n){
 		
 }
 
+template<typename T>
+bool is_sorted(T *a, long len, char asc_or_desc='A'){
+	if(asc_or_desc=='A'){
+		for(long i=0; i<len-1; i++)
+			if(a[i]>a[i+1])
+				return false;
+		return true;
+	}
+	else if(asc_or_desc=='D'){
+		for(long i=0; i<len-1; i++)
+			if(a[i]<a[i+1])
+				return false;
+		return true;
+	}
+	else cout<<"\nINVALID INPUT TO IS_SORTED\n";
+}
 
 int main(){
 	long i;	
-	long n=15;
+	long n=102;
 	int *a=new int[n];
 	for(i=0; i<n; i++){
 		a[i]=rand()%(n*10);
@@ -125,8 +141,11 @@ int main(){
 	RadixSort(a,n);
 
 	cout<<"\n\n";
-	for(i=0; i<n; i++){
+	if(is_sorted(a,n))
+		cout<<"Sorting has worked!";
+	else cout<<"Not sorted";
+	/*for(i=0; i<n; i++){
 		cout<<a[i]<<" ";
-	}
+	}*/
 }
 
