@@ -150,7 +150,9 @@ class LinkedList{
 		isSorted=true;
 	}
 
+
 	private:
+
 	void mergesort(Node<T>* &node){
     	if(!node || !node->next)
 			return;
@@ -204,11 +206,15 @@ class LinkedList{
       	return final;
   	}
 
+	public:
+	void mergesort_iter(){
+		
+	}	 	 
+
 };
 
 
 int main(){
-	
 
 	LinkedList<double> *ll=new LinkedList<double>();
 	long n=10;
