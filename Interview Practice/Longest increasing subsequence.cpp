@@ -21,6 +21,7 @@ long LIS_iter(int *a, long len, bool printing=false){
 	long maximum=1;
 	for(i=0; i<len; i++)
 		maximum=max(maximum, LIS_max_arr[i]);	   
+
 	
 	if (printing){
 		cout<<"\nLIS_arr: ";
@@ -36,8 +37,8 @@ long LIS_iter(int *a, long len, bool printing=false){
 			}
 		}
 	}
-
 	
+
 	return maximum;
 }
 
@@ -77,6 +78,8 @@ long LIS_rec(int *a, long len, bool printing=false){
 	long maximum=1;
 	for(i=0; i<len; i++)
 		maximum=max(maximum, LIS_max_arr[i]);	   
+
+
 	
 	if (printing){
 		cout<<"\nLIS_arr: ";
@@ -93,7 +96,6 @@ long LIS_rec(int *a, long len, bool printing=false){
 		}
 	}
 
-	
 	return maximum;
 		
 }
