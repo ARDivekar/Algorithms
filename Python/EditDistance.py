@@ -1,8 +1,7 @@
 #EditDistance.py
 import pickle
 import time
-from misc_functions import Stopwatch
-
+# from misc_functions import Stopwatch
 
 
 def EditDistance(wordx, wordy, insert_penalty=1, delete_penalty=1, substitution_penalty=1, printing=True):
@@ -11,41 +10,32 @@ def EditDistance(wordx, wordy, insert_penalty=1, delete_penalty=1, substitution_
 	# we can set the penalties, so that we can take into account more expensive insert, delete and replacement penalites
 	big_number=max(len(wordx), len(wordy)) + 1
 	mat =[]
-	for i in range (0,len(wordx)):
-		mat.append([big_number for x in range(0,len(wordy))])
+	for i in range (0,len(wordx)+1):
+		mat.append([-1 for x in range(0,len(wordy)+1)])
 	
-	
-	for i in range(0,len(wordx)):
-		for j in range(0,len(wordy)):
-			if i==0 and j==0:   # base case
-				if wordx[0]==wordy[0]:
-					mat[0][0]=0
-				else:
-					mat[0][0]=min(substitution_penalty, insert_penalty+delete_penalty)
-			
-			# base case: 
-			elif i==0 :   
-				mat[i][j]=j
-			elif j==0 :   
-				mat[i][j]=i
-			
+	for i in range(0,len(wordx)+1):
+		mat[i][0]=i
+	for j in range(0,len(wordy)+1):
+		mat[0][j]=j
 
-			else: 
-				delete_now_cost=mat[i-1][j] + delete_penalty
-				insert_now_cost=mat[i][j-1] + insert_penalty
-				if wordx[i]==wordy[j]:
-					substitute_now_cost = mat[i-1][j-1]
-				else:
-					substitute_now_cost = mat[i-1][j-1] + substitution_penalty
-				mat[i][j]=min([delete_now_cost,insert_now_cost,substitute_now_cost])
+	for i in range(1,len(wordx)+1):
+		for j in range(1,len(wordy)+1):
+			if(wordx[i-1]==wordy[j-1]):
+				mat[i][j]=mat[i-1][j-1]
+			else:
+				from_left= mat[i][j-1] + insert_penalty
+				from_top= mat[i-1][j] + delete_penalty
+				from_top_left= mat[i-1][j-1] + substitution_penalty
+				mat[i][j]=min(from_left, from_top, from_top_left)
 
+			
 	if printing:
 		print "Edit Distance: %s"%mat[len(wordx)-1][len(wordy)-1]
-		for i in range (0,len(wordx)):
+		for i in range (0,len(wordx)+1):
 			print mat[i]		
-	return mat[len(wordx)-1][len(wordy)-1]
+	return mat[len(wordx)][len(wordy)]
 
-# EditDistance('Alakazam','Abracadabra')
+EditDistance('SUNDAY','SATURDAY',1,1,1.5)
 	
 def MinEditDistance(word, dictionary, printing=True):
 	closest_words=[]
