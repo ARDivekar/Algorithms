@@ -3,6 +3,7 @@
 #include<time.h>
 #include<stdio.h>
 #include<algorithm>
+#include<string>
 using namespace std;
 
 
@@ -33,15 +34,18 @@ int* generateRandomArray(int len, int rangeStart=0, int rangeEnd=0){
     return randomArr;
 }
 
-void printArray(int* arr, int len){
+
+template<typename T>
+void printArray(T* arr, int len, string spacer="  "){
     for(int i=0; i<len; i++){
-        cout<<arr[i]<<"  ";
+        cout<<arr[i]<<spacer;
     }
 }
 
-void printVector(vector<int> vec){
+template<typename T>
+void printVector(vector<T> vec, string spacer="  "){
     for(int i=0; i<vec.size(); i++){
-        cout<<vec[i]<<"  ";
+        cout<<vec[i]<<spacer;
     }
 }
 
