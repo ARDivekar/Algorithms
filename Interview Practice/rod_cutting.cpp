@@ -53,7 +53,7 @@ int rodCutting(int** ref, int ref_size, int n){
 
     for(i=1; i<=n; i++){
         int maxProfit = -1;
-        for(j=1; j<=i; j++)
+        for(j=1; j<=(int)(i+1/2); j++)
             maxProfit = max(maxProfit, opt[i-j]+opt[j]);
         opt[i]=maxProfit;
     }
