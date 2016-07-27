@@ -8,6 +8,9 @@ void printArray(T arr, int len){
 }
 
 int totalNumWaysToMakeChange(int* coins, int ref_size, int n){
+    // From: http://prismoskills.appspot.com/lessons/Dynamic_Programming/Chapter_02_-_No_of_ways_to_climb_stairs.jsp
+    // And: http://www.geeksforgeeks.org/count-ways-reach-nth-stair/
+
     int i,j;
     int* opt = new int[n+1];
     for(i=1; i<=n; i++)
