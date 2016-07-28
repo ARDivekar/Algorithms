@@ -1,7 +1,7 @@
 #include<algorithm>
 #include<iostream>
 #include<vector>
-
+#include<string>
 #include<time.h>
 #include<stdio.h>
 
@@ -21,7 +21,9 @@ vector<int>* generateRandomVector(int len, int rangeStart=0, int rangeEnd=0){
 
 int main(){
     int i;
-    const int n = 7;
+
+
+    // Sorting a vector of integers:
     vector<int> a = *(generateRandomVector(50));
 
     cout<<"\nVector (size = "<<a.size()<<"):\n";
@@ -36,5 +38,32 @@ int main(){
         cout<<a[i]<<"  ";
     cout<<endl;
 
+    cout<<"\n\n\n";
+
+
+    // Sorting a vector of strings: just use sort() like normal.
+    vector<string> strs;
+    strs.push_back("javascript");
+    strs.push_back("dastardly");
+    strs.push_back("abacus");
+    strs.push_back("aberration");
+    strs.push_back("xylophone");
+    strs.push_back("linguini");
+
+    cout<<"\nVector (size = "<<strs.size()<<"):\n";
+    for(i=0; i<strs.size(); i++)
+        cout<<strs[i]<<"  ";
+    cout<<endl;
+
+    std::sort(strs.begin(), strs.end());
+
+    cout<<"\nSorted Vector (size = "<<strs.size()<<"):\n";
+    for(i=0; i<strs.size(); i++)
+        cout<<strs[i]<<"  ";
+    cout<<endl;
+
+
+
+    cout<<"\n\n\n";
     return 0;
 }
