@@ -16,7 +16,7 @@ public:
 		data = input_data;
 		next = NULL;
 	}
-	
+
 	bool operator<(const Node<T> &A) const{ //operator overloading
 		if (data < A.data)
 			return true;
@@ -28,7 +28,7 @@ public:
 			return true;
 		else return false;
 	}
-	
+
 };
 
 
@@ -41,10 +41,9 @@ void pq_max_test1() {
 	pq_max.push(*(new Node<int>(1)));
 	pq_max.push(*(new Node<int>(3)));
 	pq_max.push(*(new Node<int>(5)));
-	
+
 	while (!pq_max.empty()) {
 		cout << pq_max.top().data<< " ";
 		pq_max.pop();
 	}
 }
-

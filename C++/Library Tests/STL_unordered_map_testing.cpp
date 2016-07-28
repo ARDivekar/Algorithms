@@ -18,18 +18,22 @@ void un_map_test1() {
 	}
 	cout << "\n\n\nUSING ERASE:";
 	map.erase(-5);
+
 	cout << "\nUsed " << map.size() << " of " << map.bucket_count();
+
 	cout << "\nTrying to access map[-5] which we have now deleted : ";
 	if (map[-5] == NULL)
 		cout << "It is NULL";
 	cout << "\nNote: now that we have tried to access map[-5], it exists: ";
 	cout << "\nUsed " << map.size() << " of " << map.bucket_count();
+
 	cout << "\nWe don't want this to happen. Let's erase it again:";
 	map.erase(-5);
 	cout << "\nDone.";
 	cout << "\nUsed " << map.size() << " of " << map.bucket_count();
+
 	cout << "\nNow, let's use map.find(key) instead: ";
-	auto &key =map.find(-5);
+	auto &key = map.find(-5);
 	if (key != map.end())
 		cout << "\nFound " << key->first << ":" << key->second;
 	else
@@ -45,7 +49,6 @@ void un_map_test1() {
 	cout << "\nUsed " << map.size() << " of " << map.bucket_count();
 
 
-
 	cout << "\n\nWe can't achieve the same thing as map.erase(__) by just setting elements to NULL:";
 	cout << "\nUsed " << map.size() << " of " << map.bucket_count();
 	map[-4] = NULL;
@@ -56,7 +59,7 @@ void un_map_test1() {
 
 }
 
-void un_map_test3() {//used to see the effect of table doubling (actually it becomes 8 times) 
+void un_map_test3() {//used to see the effect of table doubling (actually it becomes 8 times)
 	std::unordered_map<int, int>map;
 	char x;
 	int i;
@@ -143,5 +146,3 @@ void un_map_test5() {//testing map.insert
 		cout << "\nBucket " << i << " Size: " << map.bucket_size(i);
 	}
 }
-
-
