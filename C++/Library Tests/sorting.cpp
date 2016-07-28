@@ -19,29 +19,30 @@ vector<int>* generateRandomVector(int len, int rangeStart=0, int rangeEnd=0){
     return randomVec;
 }
 
-int main(){
+void sortVectorOfIntegers(){
     int i;
-
-
     // Sorting a vector of integers:
     vector<int> a = *(generateRandomVector(50));
 
-    cout<<"\nVector (size = "<<a.size()<<"):\n";
+    cout<<"\nVector of integers (size = "<<a.size()<<"):\n";
     for(i=0; i<a.size(); i++)
         cout<<a[i]<<"  ";
     cout<<endl;
 
     std::sort(a.begin(), a.end());
 
-    cout<<"\nSorted Vector (size = "<<a.size()<<"):\n";
+    cout<<"\nSorted Vector of integers (size = "<<a.size()<<"):\n";
     for(i=0; i<a.size(); i++)
         cout<<a[i]<<"  ";
     cout<<endl;
 
-    cout<<"\n\n\n";
+}
 
 
+
+void sortVectorOfStrings(){
     // Sorting a vector of strings: just use sort() like normal.
+    int i;
     vector<string> strs;
     strs.push_back("javascript");
     strs.push_back("dastardly");
@@ -50,20 +51,145 @@ int main(){
     strs.push_back("xylophone");
     strs.push_back("linguini");
 
-    cout<<"\nVector (size = "<<strs.size()<<"):\n";
+    cout<<"\nVector of string (size = "<<strs.size()<<"):\n";
     for(i=0; i<strs.size(); i++)
         cout<<strs[i]<<"  ";
     cout<<endl;
 
     std::sort(strs.begin(), strs.end());
 
-    cout<<"\nSorted Vector (size = "<<strs.size()<<"):\n";
+    cout<<"\nSorted Vector of string (size = "<<strs.size()<<"):\n";
     for(i=0; i<strs.size(); i++)
         cout<<strs[i]<<"  ";
     cout<<endl;
+}
 
 
 
+
+
+
+class Node{
+public:
+    int data;
+    Node(int data=0){
+        this->data = data;
+    }
+
+    friend ostream& operator<<(ostream& os, const Node &node){
+        os << node.data;
+        return os;
+    }
+
+    bool operator<(const Node &A)    // checks if (this < A)
+    const{
+        if(this->data < A.data)
+            return true;
+        return false;
+    }
+
+    bool operator>(const Node &A)    // checks if (this > A)
+    const{
+        if(this->data > A.data)
+            return true;
+        return false;
+    }
+};
+
+
+void sortVectorOfNodes(){
+    int i;
+    vector<Node> nodes;
+    nodes.push_back(*(new Node(5)));
+    nodes.push_back(*(new Node(3)));
+    nodes.push_back(*(new Node(7)));
+    nodes.push_back(*(new Node(1)));
+    nodes.push_back(*(new Node(2)));
+
+    cout<<"\nVector of Nodes (size = "<<nodes.size()<<"):\n";
+    for(i=0; i<nodes.size(); i++)
+        cout<<nodes[i]<<"  ";
+    cout<<endl;
+
+    std::sort(nodes.begin(), nodes.end());
+
+    cout<<"\nSorted Vector of Nodes (size = "<<nodes.size()<<"):\n";
+    for(i=0; i<nodes.size(); i++)
+        cout<<nodes[i]<<"  ";
+    cout<<endl;
+}
+
+
+class Box{
+public:
+    int length;
+    int breadth;
+    int height;
+
+    Box(int length, int breadth, int height){
+        this->length = length;
+        this->breadth = breadth;
+        this->height = height;
+    }
+
+    int volume() const{
+        return this->length*this->breadth*this->height;
+    }
+
+    friend ostream& operator<<(ostream& os, const Box &box){
+        os << box.volume();
+        return os;
+    }
+
+
+    bool operator<(const Box &A) // checks if (this < A)
+    const{
+        if(this->volume() < A.volume())
+            return true;
+        return false;
+    }
+
+    bool operator>(const Box &A) // checks if (this > A)
+    const{
+        if(this->volume() > A.volume())
+            return true;
+        return false;
+    }
+};
+
+
+
+void sortVectorOfBoxes(){
+    int i;
+    vector<Box> boxes;
+    boxes.push_back(*(new Box(5, 7, 9)));
+    boxes.push_back(*(new Box(3, 2, 1)));
+    boxes.push_back(*(new Box(7, 3, 3)));
+    boxes.push_back(*(new Box(1, 4, 5)));
+    boxes.push_back(*(new Box(2, 2, 2)));
+
+    cout<<"\nVector of Boxes (size = "<<boxes.size()<<"):\n";
+    for(i=0; i<boxes.size(); i++)
+        cout<<boxes[i]<<"  ";
+    cout<<endl;
+
+    std::sort(boxes.begin(), boxes.end());  // not working
+
+    cout<<"\nSorted Vector of Boxes (size = "<<boxes.size()<<"):\n";
+    for(i=0; i<boxes.size(); i++)
+        cout<<boxes[i]<<"  ";
+    cout<<endl;
+}
+
+
+int main(){
+    sortVectorOfIntegers();
+    cout<<"\n\n\n";
+    sortVectorOfStrings();
+    cout<<"\n\n\n";
+    sortVectorOfNodes();
+    cout<<"\n\n\n";
+    sortVectorOfBoxes();
     cout<<"\n\n\n";
     return 0;
 }
