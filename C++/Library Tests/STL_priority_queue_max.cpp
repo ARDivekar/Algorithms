@@ -18,13 +18,13 @@ public:
 	}
 
 	bool operator<(const Node<T> &A) const{ //operator overloading
-		if (data < A.data)
+		if (this->data < A.data)
 			return true;
 		else return false;
 	}
 
 	bool operator>(const Node<T> &A) const { //operator overloading
-		if (data > A.data)
+		if (this->data > A.data)
 			return true;
 		else return false;
 	}
@@ -46,4 +46,12 @@ void pq_max_test1() {
 		cout << pq_max.top().data<< " ";
 		pq_max.pop();
 	}
+}
+
+
+int main(){
+	pq_max_test1();
+
+	cout<<endl;
+	return 0;
 }
