@@ -38,7 +38,12 @@ void sortVectorOfIntegers(){
 
 }
 
-
+void sortString(){
+    string str = "hulabaloo";
+    cout<<"\nString before sorting: "<<str<<"\n";
+    std::sort(str.begin(), str.end());
+    cout<<"\nString after sorting: "<<str<<"\n";
+}
 
 void sortVectorOfStrings(){
     // Sorting a vector of strings: just use sort() like normal.
@@ -119,7 +124,6 @@ void sortVectorOfNodes(){
     cout<<endl;
 }
 
-
 class Box{
 public:
     int length;
@@ -184,6 +188,8 @@ void sortVectorOfBoxes(){
 
 int main(){
     sortVectorOfIntegers();
+    cout<<"\n\n\n";
+    sortString();
     cout<<"\n\n\n";
     sortVectorOfStrings();
     cout<<"\n\n\n";
