@@ -6,6 +6,7 @@ int main(){
     // C++11 syntax:
 	int i,j;
 
+    int* arrInitToZero = new int[256]{0}; // Only works for zero.
 
     int* arr1d = new int[5]{2,7,1,9,3};
     // Print 1D array:
