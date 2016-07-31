@@ -17,14 +17,14 @@ public:
 		next = NULL;
 	}
 
-	bool operator<(const Node<T> &A) const{ //operator overloading
-		if (this->data < A.data)
+	bool operator<(const Node<T> &A) const{ // overloading: if (this < A)
+		if (this->data < A.data) // we want a max-heap
 			return true;
 		else return false;
 	}
 
-	bool operator>(const Node<T> &A) const { //operator overloading
-		if (this->data > A.data)
+	bool operator>(const Node<T> &A) const { // overloading: if (this > A)
+		if (this->data > A.data) // we want a max-heap
 			return true;
 		else return false;
 	}
