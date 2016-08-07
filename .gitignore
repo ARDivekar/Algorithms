@@ -1,3 +1,9 @@
 *.exe
 *.exe
 *.tmp
+*.suo
+Algorithms.sln
+Algorithms.vcxproj.filters
+Algorithms.VC.db
+*.vcxproj
+Algorithms.VC.VC.opendb
