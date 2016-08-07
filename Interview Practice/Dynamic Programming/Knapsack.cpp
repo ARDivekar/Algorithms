@@ -16,13 +16,16 @@ int knapsack(map<string, int*> &items, int C, bool printing=true){ // C = capaci
     whichItem[0] = "";
 
     map<string, int*>::iterator iter;
+    int itemWeight, itemVal;
     for(i=1; i<=C; i++){
         opt[i] = opt[i-1];
         whichItem[i] = "";
         for(iter=items.begin(); iter!=items.end(); iter++){
-            if(i-iter->second[0] >= 0 ){ // make sure you don't go below weight of 0.
-                if(opt[i - iter->second[0]]+iter->second[1] > opt[i]){
-                    opt[i] = opt[i - iter->second[0]]+iter->second[1]; // Max of the previous max, and the value of the item.
+            itemWeight = iter->second[0];
+            itemVal = iter->second[1];
+            if(i-itemWeight >= 0 ){ // make sure you don't go below weight of 0.
+                if(opt[i-itemWeight] + itemVal > opt[i]){
+                    opt[i] = opt[i-itemWeight] + itemVal; // Max of the previous max, and the sack with the value of the item.
                     whichItem[i] = iter->first;
                 }
 
