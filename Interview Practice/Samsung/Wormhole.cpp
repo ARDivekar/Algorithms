@@ -146,12 +146,12 @@ void printGraph(){
 }
 
 int main(){
-    int src_x =  0, src_y =  0;
+    int src_x =  2, src_y =  1;
     int dest_x = 5, dest_y = 4;
     numWormholes = 2;
     wormholes = new Wormhole[numWormholes];
-    wormholes[0] = *(new Wormhole(2,3, 4,3, 1));
-    wormholes[1] = *(new Wormhole(0,4, 3,5, 1));
+    wormholes[0] = *(new Wormhole(2,3, 4,3, 0));
+    wormholes[1] = *(new Wormhole(0,4, 3,5, 0));
     wormholeToDijkstra(src_x, src_y, dest_x, dest_y);
     printGraph();
     dist = new int[N];
