@@ -1,14 +1,14 @@
 /*
-    You want to travel through space. Space is an NxN grid.
-    You can move up, down, left, or right. Each movement costs you 1 point.
-    Additionally, there are some wormholes. Using these wormholes, you can quickly go from point A to point B. The wormhole has a cost (some number of points) needed to travel through it.
-    Wormholes are bidirectional.
-    It may not always be less costly to go through the wormhole.
-    You are given the starting point S, with destination D.
-    You want to find the path with the least cost (points) to get from S to D.
+You want to travel through space. Space is an NxN grid.
+You can move up, down, left, or right. Each movement costs you 1 point.
+Additionally, there are some wormholes. Using these wormholes, you can quickly go from point A to point B. The wormhole has a cost (some number of points) needed to travel through it.
+Wormholes are bidirectional.
+It may not always be less costly to go through the wormhole.
+You are given the starting point S, with destination D.
+You want to find the path with the least cost (points) to get from S to D.
 
-    Example:
-    0   1   2   3   4   5
+Example:
+0   1   2   3   4   5
 0 [                 B     ]
 1 [                       ]
 2 [     S       A         ]
@@ -87,8 +87,8 @@ void Dijkstra(int srcIndex){
         visited[currentClosestNodeIndex] = true;
         for(j=0; j<N; j++){
             if(graph[currentClosestNodeIndex][j] != INT_MAX
-            && !visited[j]
-            && dist[currentClosestNodeIndex] + graph[currentClosestNodeIndex][j] < dist[j]
+                && !visited[j]
+                && dist[currentClosestNodeIndex] + graph[currentClosestNodeIndex][j] < dist[j]
             )
             dist[j] = dist[currentClosestNodeIndex] + graph[currentClosestNodeIndex][j];
         }
@@ -107,9 +107,9 @@ void wormholeToDijkstra(int src_x, int src_y, int dest_x, int dest_y){
     for(i=0; i<N; i++){
         graph[i] = new int[N];
         for(j=0; j<N; j++)
-            if(i==j)
-                graph[i][j] = 0;
-            else graph[i][j] = INT_MAX;
+        if(i==j)
+        graph[i][j] = 0;
+        else graph[i][j] = INT_MAX;
     }
 
     sourceIndex = 0;
