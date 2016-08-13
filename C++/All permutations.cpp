@@ -33,6 +33,8 @@ void generatePermsRecursive(int n, vector<int> &a, int &count){
     }
 }
 
+
+// Source: https://www.wikiwand.com/en/Heap's_algorithm
 void generatePermsIterative(vector<int> &a){
     int n = a.size();
     vector<int> c(n);
@@ -67,6 +69,22 @@ void generatePermsIterative(vector<int> &a){
     }
 }
 
+
+// Source: https://see.stanford.edu/materials/icspacs106b/H19-RecBacktrackExamples.pdf
+void RecPermute(string soFar, string rest, int &count){
+    if (rest.empty()) {
+        count+=1;
+        cout << count << " : " << soFar << endl;
+    }
+    else {
+        for (int i = 0; i < rest.length(); i++) {
+            string remaining = rest.substr(0, i) + rest.substr(i+1);
+            RecPermute(soFar + rest[i], remaining, count);
+        }
+    }
+}
+
+
 int main(){
     vector<int> a(5);
     a[0] = 1;
@@ -78,6 +96,10 @@ int main(){
     int count = 0;
     cout<<"\n\n\n";
     generatePermsRecursive(a.size(), a, count);
+    cout<<"\n\n\n";
+    count = 0;
+    RecPermute("", "abcde", count);
     cout<<endl;
+
     return 0;
 }
