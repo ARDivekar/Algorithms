@@ -1,5 +1,6 @@
 #include<iostream>
 #include<vector>
+#include<algorithm>
 using namespace std;
 
 void printVec(vector<int> &a, int count){
@@ -94,18 +95,12 @@ void RecPermuteVectors(vector<int> soFar, vector<int> rest, int &count){
         for (int i = 0; i < rest.size(); i++) {
             vector<int> remaining;
             vector<int> newSoFar;
+
             newSoFar.insert(newSoFar.end(), soFar.begin(), soFar.end());
             newSoFar.insert(newSoFar.end(), rest.begin()+i, rest.begin()+i+1);
+
             remaining.insert(remaining.end(), rest.begin(), rest.begin() + i);
             remaining.insert(remaining.end(), rest.begin()+ i+1, rest.end()); // Miss i'th element.
-
-            // cout<<"\n\n\n";
-            // cout<<"\nrest: ";
-            // printVec(rest, 0);
-            // cout<<"\nSo far: ";
-            // printVec(newSoFar, 0);
-            // cout<<"\nremaining: ";
-            // printVec(remaining, 0);
 
             RecPermuteVectors(newSoFar, remaining, count);
         }
@@ -114,8 +109,8 @@ void RecPermuteVectors(vector<int> soFar, vector<int> rest, int &count){
 }
 
 
-
 int main(){
+    int i;
     int count = 0;
     vector<int> a(5);
     a[0] = 1;
@@ -123,14 +118,11 @@ int main(){
     a[2] = 3;
     a[3] = 4;
     a[4] = 5;
+    sort(a.begin(), a.end());
     generatePermsIterative(a);
 
     cout<<"\n\n\n";
-    a[0] = 1;
-    a[1] = 2;
-    a[2] = 3;
-    a[3] = 4;
-    a[4] = 5;
+    sort(a.begin(), a.end());
     generatePermsRecursive(a.size(), a, count);
 
     cout<<"\n\n\n";
@@ -139,12 +131,9 @@ int main(){
 
     cout<<"\n\n\n";
     count = 0;
-    a[0] = 1;
-    a[1] = 2;
-    a[2] = 3;
-    a[3] = 4;
-    a[4] = 5;
+    sort(a.begin(), a.end());
     RecPermuteVectors(*(new vector<int>()), a, count);
+
     cout<<endl;
     return 0;
 }
