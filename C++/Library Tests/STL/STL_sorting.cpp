@@ -124,6 +124,9 @@ void sortVectorOfNodes(){
     cout<<endl;
 }
 
+
+
+
 class Box{
 public:
     int length;
@@ -136,7 +139,7 @@ public:
         this->height = height;
     }
 
-    int volume() const{
+    int volume() const{ // const is very important here as otherwise you can't use this in the operator<() function.
         return this->length*this->breadth*this->height;
     }
 
@@ -159,6 +162,13 @@ public:
             return true;
         return false;
     }
+
+    bool operator==(const Box &A) const{
+        if(this->w == A.w && this->d == A.d && this->h == A.h)
+            return true;
+        return false;
+    }
+
 };
 
 
