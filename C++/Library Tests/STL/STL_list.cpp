@@ -31,7 +31,7 @@ void listTest(){
             L.back()    Return the last element; O(1)
 
         Random element accessors:
-            Not possible. Only iterators.
+            Not possible. Only iterators L.begin() and L.end().
 
         Insertion:
             L.push_front(value)     Add value to front; O(1)
