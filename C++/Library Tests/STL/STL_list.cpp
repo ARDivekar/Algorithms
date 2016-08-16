@@ -49,6 +49,7 @@ void listTest(){
         Reordering:
             L.reverse()             Reverse the list; O(n)
             L.sort()                Sort the list; O(n log n)
+                                    NOTE: cannot use sort(L.begin(), L.end()) from <algorithm>
             L.sort(comparison)      Sort with comparison function; O(n logn)
 
         Concatenation:
