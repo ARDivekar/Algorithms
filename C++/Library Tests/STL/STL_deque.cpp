@@ -17,7 +17,7 @@ void printDeque(deque<int> a){
 
 void testDeque(){
     /*
-    <deque> stands for double-ended queue (meaning you can insert and remove from both ends in O(1) time), and is an interesting data structure, basically a vector of fixed-sized arrays. See http://stackoverflow.com/a/6292437/4900327 for more info.
+    <deque> stands for double-ended queue (meaning you can insert and remove from both ends in O(1) time), and is an interesting data structure, basically a vector of pointers to fixed-sized arrays. See http://stackoverflow.com/a/6292437/4900327 for more info.
     [Legend:  *** = be careful]
 
     <deque> functions:
