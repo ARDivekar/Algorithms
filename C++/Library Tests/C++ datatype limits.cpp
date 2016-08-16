@@ -15,6 +15,9 @@ void testUnsignedLongLong(){
     cout<<"\n\t(Wraparound value + 1): \t  "<<data;
     data += 1;
     cout<<"\n\t(Wraparound value + 2): \t  "<<data;
+
+    cout<<"\n\tWe can generate ULLONG_MAX by : ` ( ((unsigned long long)1<<64) -1) ` : ";
+    cout<<( ((unsigned long long)1<<64) -1);
     cout<<endl;
 }
 
