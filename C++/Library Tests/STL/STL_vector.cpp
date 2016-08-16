@@ -37,8 +37,8 @@ void testVec(){
             A.back()    Return the last element; O(1)
 
         Random element accessors:
-            A[i]	Return the i'th element; O(1)
-            Iterators: A.begin() and A.end()
+            A[i]        Return the i'th element; O(1)
+            Iterators:  A.begin() and A.end()
 
         Insertion:
             A.push_back(value)	    Add value to end; O(1) AMORTIZED
@@ -49,7 +49,7 @@ void testVec(){
             A.pop_back()            Remove value from end; O(1)
                                     NOTE: A.pop_front() does not exist as it would be O(n)
             A.erase(iter)           ***Erase value indexed by vector<T>::iterator iter; O(n)
-            A.erase(pos1, pos2)	    ***Erase the elements from list<T>::iterator pos1 upto (but not including) list<T>::iterator pos2; NOTE: pos2 is not erased. O(n)
+            A.erase(pos1, pos2)	    ***Erase the elements from vector<T>::iterator pos1 upto (but not including) vector<T>::iterator pos2; NOTE: pos2 is not erased. O(n)
             A.clear()               Remove all elements.
 
         Reordering:
