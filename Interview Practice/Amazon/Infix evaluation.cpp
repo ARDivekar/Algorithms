@@ -9,6 +9,8 @@ int priority(char op){
         case '-': return 2;
         case '*': return 3;
         case '/': return 4;
+        case '(': return 0;
+        case ')': return 0;
         default: return -1;
     }
 
@@ -39,6 +41,21 @@ void printStack(stack<T> &a){
     }
 }
 
+void computeValFromStacks(stack<int> &values, stack<char> &operators){
+    int val2 = values.top();
+    // cout<<"\nval2: "<<val2;
+    values.pop();
+    int val1 = values.top();
+    // cout<<"\nval1: "<<val1;
+    values.pop();
+    values.push(eval(val1, val2, operators.top()));
+    operators.pop();
+    // cout<<"\nValues:";
+    // printStack(values);
+    // cout<<"\nOperators:";
+    // printStack(operators);
+}
+
 int infixEval(string expr){
     stack<int> values;
     stack<char> operators;
@@ -48,19 +65,21 @@ int infixEval(string expr){
         current = expr.at(i);
         // cout<<"\n\n\nCurrent char: "<<current;
         if(priority(current) == -1)
-        values.push(current - '0');
+            values.push(current - '0');
+        else if(current == '(')
+            operators.push(current);
+        else if(current == ')'){
+            while(!operators.empty() && operators.top()!='('){
+                computeValFromStacks(values, operators);
+            }
+            operators.pop();
+        }
         else{
             while(!operators.empty() && priority(current) <= priority(operators.top())){
-                val2 = values.top();
-                values.pop();
-                val1 = values.top();
-                values.pop();
-                values.push(eval(val1, val2, operators.top()));
-                operators.pop();
+                computeValFromStacks(values, operators);
             }
             operators.push(current);
         }
-
         // cout<<"\nValues:";
         // printStack(values);
         // cout<<"\nOperators:";
@@ -68,16 +87,7 @@ int infixEval(string expr){
     }
     // cout<<"\n\nFinal evaluation: ";
     while(!operators.empty() && values.size()!=1){
-        val2 = values.top();
-        values.pop();
-        val1 = values.top();
-        values.pop();
-        values.push(eval(val1, val2, operators.top()));
-        operators.pop();
-        // cout<<"\nValues:";
-        // printStack(values);
-        // cout<<"\nOperators:";
-        // printStack(operators);
+        computeValFromStacks(values, operators);
     }
     return values.top();
 }
@@ -85,7 +95,7 @@ int infixEval(string expr){
 
 
 int main(){
-    string e = "4/2*6/2";
+    string e = "(3*(1-(6+2)/2))";
     cout<<"\n\nFinal value: "<<infixEval(e);
 
     cout<<endl;
