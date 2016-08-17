@@ -1,12 +1,6 @@
 #include<unordered_map>  //only allowed in C++ 11 and above
-#ifndef IOSTREAM
-#define IOSTREAM
-	#include<iostream>
-#endif
-#ifndef STRING
-#define STRING
-	#include<string>
-#endif
+#include<iostream>
+#include<string>
 
 using namespace std;
 
