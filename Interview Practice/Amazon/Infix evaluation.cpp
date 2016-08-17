@@ -1,6 +1,7 @@
 #include<stack>
 #include<iostream>
 #include<string>
+#include<stdlib.h>
 using namespace std;
 
 int priority(char op){
@@ -56,6 +57,16 @@ void computeValFromStacks(stack<int> &values, stack<char> &operators){
     // printStack(operators);
 }
 
+int parseNum(string &expr, int &i){
+    string num = "";
+    while(priority(expr.at(i)) == -1 ){
+        num.push_back(expr.at(i));
+        i++;
+    }
+    i--;
+    return atoi(num.c_str());
+}
+
 int infixEval(string expr){
     stack<int> values;
     stack<char> operators;
@@ -64,8 +75,9 @@ int infixEval(string expr){
     for(int i=0; i<expr.length(); i++){
         current = expr.at(i);
         // cout<<"\n\n\nCurrent char: "<<current;
-        if(priority(current) == -1)
-            values.push(current - '0');
+        if(priority(current) == -1){
+            values.push(parseNum(expr, i));
+        }
         else if(current == '(')
             operators.push(current);
         else if(current == ')'){
@@ -95,7 +107,7 @@ int infixEval(string expr){
 
 
 int main(){
-    string e = "(3*(1-(6+2)/2))";
+    string e = "(333*(1-(6+2)/2))";
     cout<<"\n\nFinal value: "<<infixEval(e);
 
     cout<<endl;
