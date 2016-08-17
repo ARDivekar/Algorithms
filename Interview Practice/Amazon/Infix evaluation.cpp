@@ -42,7 +42,7 @@ void printStack(stack<T> &a){
     }
 }
 
-void computeValFromStacks(stack<int> &values, stack<char> &operators){
+void popComputePush(stack<int> &values, stack<char> &operators){
     int val2 = values.top();
     // cout<<"\nval2: "<<val2;
     values.pop();
@@ -82,13 +82,13 @@ int infixEval(string expr){
             operators.push(current);
         else if(current == ')'){
             while(!operators.empty() && operators.top()!='('){
-                computeValFromStacks(values, operators);
+                popComputePush(values, operators);
             }
             operators.pop();
         }
         else{
             while(!operators.empty() && priority(current) <= priority(operators.top())){
-                computeValFromStacks(values, operators);
+                popComputePush(values, operators);
             }
             operators.push(current);
         }
@@ -99,7 +99,7 @@ int infixEval(string expr){
     }
     // cout<<"\n\nFinal evaluation: ";
     while(!operators.empty() && values.size()!=1){
-        computeValFromStacks(values, operators);
+        popComputePush(values, operators);
     }
     return values.top();
 }
