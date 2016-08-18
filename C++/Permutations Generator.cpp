@@ -97,7 +97,7 @@ void RecPermuteVectors(vector<int> soFar, vector<int> rest, int &count){
             vector<int> newSoFar;
 
             newSoFar.insert(newSoFar.end(), soFar.begin(), soFar.end());
-            newSoFar.insert(newSoFar.end(), rest.begin()+i, rest.begin()+i+1);
+            newSoFar.insert(newSoFar.end(), rest.begin()+i, rest.begin()+i+1); // Add i'th element
 
             remaining.insert(remaining.end(), rest.begin(), rest.begin() + i);
             remaining.insert(remaining.end(), rest.begin()+ i+1, rest.end()); // Miss i'th element.
